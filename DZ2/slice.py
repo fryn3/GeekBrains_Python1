@@ -24,8 +24,7 @@
 # Например, из 'a b c d e f' получится 'b d f'
 # Решите задачу в одну строчку используя срезы.
 def even(s):
-    # +++ ваш код +++
-    return
+    return ' '.join(s.split()[1::2])
 
 
 # B. Наоборот
@@ -35,8 +34,7 @@ def even(s):
 # Например, из 'a b c d e' получится 'e d c b a'
 # Решите задачу в одну строчку используя срезы.
 def reverse(s):
-    # +++ ваш код +++
-    return
+    return ' '.join(s.split()[-1::-1])
 
 
 # C. Сдвиг
@@ -46,8 +44,10 @@ def reverse(s):
 # Например, из 'a b c d e f' получится 'f a b c d e'
 # Решите задачу в две строки используя срезы.
 def shift(s):
-    # +++ ваш код +++
-    return
+    list_s = s.split()[0:-1]
+    list_s.insert(0, s.split()[-1])
+    return ' '.join(list_s)
+    # return ' '.join(list_s.insert(0, s.split()[-1]))
 
 
 # D. Палиндром
@@ -56,8 +56,8 @@ def shift(s):
 # Число является палиндромом если оно одинаково читающееся в обоих направлениях.
 # Решите задачу в одну строку используя срезы.
 def palindrome(d):    
-    # +++ ваш код +++
-    return
+    sd = str(d)
+    return sd[:len(sd) // 2 + len(sd) % 2] == sd[-1:-len(sd) // 2 - 1:-1]
 
 
 # E. Внутри
@@ -67,8 +67,8 @@ def palindrome(d):
 # исходной строки. Например, из 'a b c d e f' получится 'b c a f d e'.
 # Решите задачу в три строки используя срезы.
 def inside(s):
-    # +++ ваш код +++
-    return
+    l = s.split()
+    return ' '.join(l[1:len(l)//2]) + ' ' + str(l[0]) + ' ' + str(l[-1]) + ' ' + ' '.join(l[len(l)//2:-1])
 
 
 
@@ -102,6 +102,8 @@ def main():
     print('Палиндром')
     test(palindrome(12321), True)
     test(palindrome(12345), False)
+    test(palindrome(123321), True)
+    test(palindrome(121), True)
 
     print()
     print('Внутри')
