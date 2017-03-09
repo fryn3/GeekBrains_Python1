@@ -16,8 +16,12 @@
 # длина которых составляет 2 символа и более, 
 # а первый и последний символы этих строк совпадают.
 # Примечание: в python нет оператора ++. Но += сработает.
+
+# 2017.03.08 01:12:20 checked. P.Rusanov
+# Отлично!
 def match_ends(words):
-    if type(words) == list:
+    # if type(words) == list:     # Обратите внимание, как PEP8 рекомендует проверять тип объекта
+    if isinstance(li, list)
         count = 0
         for word in words:
             if type(word) == str and len(word) > 1:
@@ -36,6 +40,9 @@ def match_ends(words):
 # Наример: из ['mix', 'xyz', 'apple', 'xanadu', 'aardvark'] получится
 # ['xanadu', 'xyz', 'aardvark', 'apple', 'mix']
 # Подсказка: это можно сделать при помощи склеивания 2х заранее отсортированных списков
+
+# 2017.03.08 01:13:12 checked. P.Rusanov
+# Отлично!
 def front_x(words):
     x_list = []
     abc_list = []
@@ -53,6 +60,13 @@ def front_x(words):
         result_list.extend(sorted(abc_list))
         return result_list
 # Вопрос: почему так не работает?   return sorted(x_list).extend(sorted(abc_list))
+
+# 2017.03.08 01:37:13 checked. P.Rusanov
+# Спасибо за интересный вопрос - беру себе в копилку ;)
+# .extend() - метод, изменяющий исходный объект, но он возвращает None.
+# Хотя объект реально и создается (и наверно даже меняется)
+# в return передаётся результат работы метода, а он - None
+
     else:
         print('No list')
         return -1
@@ -67,6 +81,9 @@ def front_x(words):
 # чтобы получить последний элемент подсписка.
 
 # https://habrahabr.ru/post/138535/
+
+# 2017.03.08 01:39:39 checked. P.Rusanov
+# Отлично! Надеюсь, Вы разобрались.
 def sortByLastElement(input):
     return input[-1]
 
@@ -80,7 +97,11 @@ def sort_last(lists):
 # Дан список чисел.
 # Нужно вернуть список, где все соседние элементы
 # были бы сведены к одному элементу.
-# Таким образом, из [1, 2, 2, 3, 4, 4] получится [1, 2, 3, 4]. 
+# Таким образом, из [1, 2, 2, 3, 4, 4] получится [1, 2, 3, 4].
+
+ # 2017.03.08 01:39:58 checked. P.Rusanov
+ # Отлично! Попробуйте обойтись без индексов - используйте переменную,
+ # хранящую предыдущее значение для каждого шага цикла 
 def remove_adjacent(nums):
     for index, a in enumerate(nums):
         while index < len(nums) - 1 and a == nums[index + 1]:
@@ -134,3 +155,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+

@@ -3,7 +3,10 @@
 
 
 
-def Equation(equation, x):
+# 2017.03.08 00:55:49 checked. P.Rusanov
+# Отлично!
+def Equation(equation, x):      # <- PEP8 рекомендует именовать функции как переменные,
+                                # т.е. с маленькой буквы 
     list_equation = equation.split()
     if list_equation[2][-1] != 'x':
         return False
@@ -41,6 +44,9 @@ def Equation(equation, x):
 # 3. Год должен приводиться к целому положительному числу в диапазоне от 1 до 9999
 # 4. Длина исходной строки для частей должна быть в соответствии с форматом 
 #  (т.е. 2 символа для дня, 2 - для месяца, 4 - для года)
+
+# 2017.03.08 00:57:41 checked. P.Rusanov
+# Отлично!
 from datetime import datetime
 
 def checkdate(str_date):
@@ -49,10 +55,11 @@ def checkdate(str_date):
         dt = datetime.strptime(str_date, '%d.%m.%Y')
     except:
         return_flag = False
+# В принципе, проверки ниже не очень-то и нужны, можно опереться на datetime    
     list_date = str_date.split('.')
-    if(len(list_date[0]) != 2):
+    if(len(list_date[0]) != 2):     # <- внешние скобки не нужны
         return_flag = False
-    if(len(list_date[1]) != 2):
+    if(len(list_date[1]) != 2):     # <- почему бы не собрать это всё в один if?
         return_flag = False
     return return_flag
 # Пример корректной даты
@@ -94,6 +101,8 @@ date = '-2.10.3001'
 # Вход: 11
 # Выход: 5 3
 
+# 2017.03.08 01:00:19 checked. P.Rusanov
+# Хорошо, но неверно рассчитывается этаж (исправлено)
 def InvTower(room):
     count_room_floor = 0            # кол-во комнат на этаже
     last_room_floor = 0             # номер последней комнаты
@@ -103,7 +112,7 @@ def InvTower(room):
         count_room_floor += 1
         prev_last_room_floor = last_room_floor  # предыдущий последний номер комнаты
         last_room_floor += count_room_floor**2
-    return [count_room_floor + (room - prev_last_room_floor - 1) // count_room_floor + 1,
+    return [floor + (room - prev_last_room_floor - 1) // count_room_floor + 1,
      (room - prev_last_room_floor - 1) % count_room_floor + 1]
 
 def main():
@@ -119,6 +128,10 @@ def main():
     print('***3***')
     print(InvTower(13))
     print(InvTower(11))
+    print(InvTower(15))
+    print(InvTower(6))
+    print(InvTower(99))
+    print(InvTower(1))
     
 
 if __name__ == '__main__':
