@@ -9,6 +9,9 @@
 # Ввод: -2/3 - -2
 # Вывод: 1 1/3
 # -1 1/3 + 17/42 - -2 3/14
+
+# 2017.03.11 13:44:04 checked. P.Rusanov
+# Отлично!
 def my_calc(st):
     _int1 = 0
     _num1 = 0   # числитель
@@ -18,7 +21,7 @@ def my_calc(st):
     _denom2 = 1 # знаменатель
     status = 0
     it = st.split()
-    for i, p in enumerate(it):
+    for p in it:    # убрал индекс
         if status == 0:
             if p.isdigit() or (p[0] == '-' and p[1:].isdigit()):
                 _int1 = int(p)
@@ -95,6 +98,10 @@ def my_calc(st):
     return '{} {}/{}'.format(res_int, int(res_num), int(res_denom))
 
 # ASK: почему от отрицательных чисел деление на цело не правильно(для меня) работают -273//18?
+# 2017.03.11 13:45:22 checked. P.Rusanov
+# Округление идёт к меньшему целому числу.
+
+
 print('***1***')
 exm = ['5/6 + 4/7', '-2/3 - -2', '-12 2/6 + -2 1/3', '1 - 1',
         '1/2 + -1/2']

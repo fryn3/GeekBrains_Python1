@@ -3,6 +3,9 @@
 # до кол-ва знаков (кол-во знаков передается вторым аргументом).
 # Округление должно происходить по математическим правилам (0.6 --> 1, 0.4 --> 0).
 # Для решения задачи не используйте встроенные функции и функции из модуля math.
+
+# 2017.03.11 13:42:20 checked. P.Rusanov
+# Отлично! Также обратите внимание на возможности форматной строки метода format()
 print('***1***')
 def my_round(number, ndigits = 0):
     '''my_round(number[, ndigits]) -> number
@@ -19,6 +22,7 @@ def my_round(number, ndigits = 0):
         return int(number * 10 ** ndigits) / 10 ** ndigits
 
 i_number = 2.1234567
+i_number = 2.9999967
 for i in range(10):
     print(str(i) + '\t' + str(my_round(i_number, i)) + '\t' + str(round(i_number, i)))
 
@@ -27,9 +31,13 @@ for i in range(10):
 # Решение реализовать в виде функции.
 # Билет считается счастливым, если сумма его первых и последних цифр равны.
 # !!!P.S.: функция не должна НИЧЕГО print'ить
+
+# 2017.03.11 13:43:26 checked. P.Rusanov
+# Отлично!
 print('***2***')
 def lucky_ticket(ticket_number):
-    return True if (sum(map(int, str(ticket_number)[:len(str(ticket_number))//2]))
-        == sum(map(int, str(ticket_number)[len(str(ticket_number))//2:]))) else False
+    # Сразу  return sum1 == sum2 (исправленно)
+    return (sum(map(int, str(ticket_number)[:len(str(ticket_number))//2]))
+        == sum(map(int, str(ticket_number)[len(str(ticket_number))//2:])))
 
 print (lucky_ticket(123321))
